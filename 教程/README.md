@@ -28,7 +28,7 @@ class.block_txt@tag.a.1@text
 class.block_txt@tag.p.2@text
 ```
 接下来调试测试一下能不能获取书籍和作者,调试点击书虫标,输入一个小说名
-![image](/png/6.JPG)成功获取,神不神奇,接下来有人又说了,那封面是图片链接还有详情URL获取呢？先上代码再说
+![image](/png/6.PNG)成功获取,神不神奇,接下来有人又说了,那封面是图片链接还有详情URL获取呢？先上代码再说
 ```java
 class.block_img@tag.img@src
 ```
