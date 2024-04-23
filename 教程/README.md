@@ -27,4 +27,36 @@ class.block_txt@tag.a.1@text
 ```java
 class.block_txt@tag.p.2@text
 ```
+接下来调试测试一下能不能获取书籍和作者,调试点击书虫标,输入一个小说名
+![image](/png/6.JPG)成功获取,神不神奇,接下来有人又说了,那封面是图片链接还有详情URL获取呢？先上代码再说
+```java
+class.block_img@tag.img@src
+```
+又有人说了这次怎么没数字,容我解析分解,获取控件block_img的img标签里的src内容,由于只有一个img标签所以不用确认,听懂掌声!同理,详情URL需要获取的是href,代码不放了自己写接下来分析目录页规则<br >点击进入详情页,往下拉,咦!怎么就几个目录,仔细一看原来有个更多章节,咱们编辑详情规则获取一下章节目录的URL,老样子查看源码找到更多章节获取href
+![image](/png/7.JPG)
 
+```java
+class.more.tag.a@href
+```
+代码放到详情,目录URL的规则里,然后去获取目录,点开更多章节,查看源码
+![image](/png/8.JPG)目录列表规则代码如下
+```java
+.chapter li a
+```
+不要问为什么这样写,因为这样识别准,获取chapter控件里的li标签里的a标签,然后章节名是文字就写text,章节URL肯定写href啦,目录说完了,那肯定是正文了,点开一张进入看小说页面,老规矩,查看源码,嘿嘿,正文最好写了,正文规则代码如下
+```java
+id.nr1@html
+```
+意思就是小说页面id是nr1确认为html就行了
+![image](/png/9.JPG)你以为完了?有的小说有下一页怎么弄?代码如下
+```java
+text.下一页@href
+```
+意思就是获取文字下一页的href
+![image](/png/10.JPG)怎么样简单吧,然后就是发现页也就是分类页了,这个有点有的跟搜索页一样,不一样跟写搜索一样写分类就行了,点开一个连接查看有无翻页，发现第二页后面/2.html 返回第一页/fenlei/1_1.html 归纳出规则/fenlei/1_{{page}}.html分类也就是发现页地址代码如下
+```java
+玄幻::/fenlei/1_{{page}}.html
+武侠::/fenlei/2_{{page}}.html
+```
+完工,一个书源就此诞生,码字不易给个赞赏如何？
+![image](/png/ZS.JPG)
